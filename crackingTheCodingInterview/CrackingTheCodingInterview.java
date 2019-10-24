@@ -43,13 +43,44 @@ public class CrackingTheCodingInterview {
         println("problem 5: replace spaces");
         String stringWithSpaces = "Trying my luck";
         println(stringWithSpaces + " spaces replaced = " + replaceSpaces(stringWithSpaces));
+
+        // problem 6: rotate matrix
+        println("problem 6: rotate matrix");
+        int[][] m = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12},
+            {13, 14, 15, 16}
+        };
+        println("before: ");
+        printMatrix(m, 4);
+        rotateMatrix(m, 4);
+        printMatrix(m, 4);
+    }
+
+    private static void printMatrix(int[][] matrix, int side) {
+        for (int i = 0; i < side; i++) {
+            String s = "";
+            for (int j = 0; j < side; j++) {
+                s += matrix[i][j] + " ";
+            }
+            println(s);
+        }
     }
 
     private static void rotateMatrix(int[][] matrix, int side) {
         for (int i = 0; i < side/2; i++) {
             for (int j = i; j < side - 1 - i; j++) {
-                int temp = matrix[j][side - 1 - i];
+                int first = matrix[j][side - 1 - i];
                 matrix[j][side - 1 - i] = matrix[i][j];
+
+                int second = matrix[side - i - 1][side - 1 - i - j];
+                matrix[side - i - 1][side - 1 - i - j] = first;
+
+                int third = matrix[side - 1 - i - j][i];
+                matrix[side - 1 - i - j][i] = second;
+
+                matrix[i][j] = third;
             }
         }
     }
