@@ -1,7 +1,7 @@
 import java.util.Set;
 import java.util.HashSet;
 
-public class CrackingTheCodingInterview {
+public class Chapter1 {
     public static void main(String args[]) {
         println("Hello World!");
         newLine();
